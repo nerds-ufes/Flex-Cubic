@@ -14,6 +14,7 @@ and dynamically CCA adaptation.
 
 **Index Terms** — *Congestion Control Algorithms, Physical Layer Impairments, Optical Networks.*
 
+## Topology: TCP Cubic association with eBPF
 ![Topology adopted and results of competition between two (partially overlapping) flows using standard TCP Cubic vs. Flex-Cubic with losses
 and queue bottlenecks.](Images/eBPF-Link.png)
 
