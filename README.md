@@ -15,7 +15,7 @@ and dynamically CCA adaptation.
 **Index Terms** — *Congestion Control Algorithms, Physical Layer Impairments, Optical Networks.*
 
 ## Background and Related Work
-![Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.](Images/rnp-400-Packet loss.png)
+![Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.](Images/rnp-400-Packet_loss.png)
 
 **Fig 1** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
 
