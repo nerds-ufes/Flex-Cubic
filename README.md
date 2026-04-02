@@ -14,7 +14,8 @@ and dynamically CCA adaptation.
 
 **Index Terms** — *Congestion Control Algorithms, Physical Layer Impairments, Optical Networks.*
 
-![Setup de testes](Images/Diagram_CC_TCP_BW2.png)
+![Topology adopted and results of competition between two (partially overlapping) flows using standard TCP Cubic vs. Flex-Cubic with losses
+and queue bottlenecks.](Images/eBPF-Link.pdf)
 
 **Fig 1** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
 
