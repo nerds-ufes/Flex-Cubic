@@ -23,15 +23,15 @@ and queue bottlenecks.](Images/eBPF-Link.png)
 ## Results
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.3,C = 41)](Images/throughput_all_delays_b03_s41.jpeg)
 
-**Fig. 2** - *Average throughput and Jain Fairness Index by TCP congestion control lossless algorithm, gOSNR ≥ 20 dB*
+**Fig. 2** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.3,C = 41)*
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)](Images/throughput_all_delays_b07_s41.jpeg) 
 
-**Fig. 3** - *Retransmission and Throughput average per Queue Variation by TCP congestion control lossless algorithm, gOSNR ≥ 20 dB*
+**Fig. 3** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)*
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)](Images/throughput_all_delays_b09_s41.jpeg)
 
-**Fig. 4** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.2% losses - gOSNR ≈ 19.45 dB*
+**Fig. 4** - * Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)*
 
 ![Retransmission and Throughput average per Queue Variation by TCP congestion control algorithm with 0.2% losses - gOSNR ≈ 19.45 dB](Images/Retr_02_loss.png)
 
