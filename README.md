@@ -14,38 +14,43 @@ and dynamically CCA adaptation.
 
 **Index Terms** — *Congestion Control Algorithms, Physical Layer Impairments, Optical Networks.*
 
+## Background and Related Work
+![Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.](Images/rnp-400-Packet loss.png)
+
+**Fig 1** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
+
 ## Topology: TCP Cubic association with eBPF
 ![Topology adopted and results of competition between two (partially overlapping) flows using standard TCP Cubic vs. Flex-Cubic with losses
 and queue bottlenecks.](Images/eBPF-Link.png)
 
-**Fig 1** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
+**Fig 2** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
 
 
 ## Results
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.3,C = 41)](Images/throughput_all_delays_b03_s41.jpeg)
 
-**Fig. 2** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.3,C = 41)*
+**Fig. 3** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.3,C = 41)*
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)](Images/throughput_all_delays_b07_s41.jpeg) 
 
-**Fig. 3** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)*
+**Fig. 4** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)*
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)](Images/throughput_all_delays_b09_s41.jpeg)
 
-**Fig. 4** - * Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)*
+**Fig. 5** - * Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)*
 
 ![Retransmission and Throughput average per Queue Variation by TCP congestion control algorithm with 0.2% losses - gOSNR ≈ 19.45 dB](Images/Retr_02_loss.png)
 
-**Fig. 5** - *Retransmission and Throughput average per Queue Variation by TCP congestion control algorithm with 0.2% losses - gOSNR ≈ 19.45 dB*
+**Fig. 6** - *Retransmission and Throughput average per Queue Variation by TCP congestion control algorithm with 0.2% losses - gOSNR ≈ 19.45 dB*
 
 ![Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.5% losses - gOSNR ≈ 19.15 dBs](Images/Thoughput_05_loss.png)
 
-**Fig. 6** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.5% losses - gOSNR ≈ 19.15 dBs*
+**Fig. 7** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.5% losses - gOSNR ≈ 19.15 dBs*
 
 ![Retransmission and Throughput average per Queue Variation by TCP congestion control algorithm with 0.5% losses - gOSNR ≈ 19.15 dB](Images/Retr_05_loss.png)
 
-**Fig. 7** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.8% losses - gOSNR ≈ 18.95 dB*
+**Fig. 8** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.8% losses - gOSNR ≈ 18.95 dB*
 
 ![Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.8% losses - gOSNR ≈ 18.95 dB](Images/Thoughput_08_loss.png)
 
-**Fig. 8** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.8% losses - gOSNR ≈ 18.95 dB*
+**Fig. 9** - *Average throughput and Jain Fairness Index by TCP congestion control algorithm with 0.8% losses - gOSNR ≈ 18.95 dB*
