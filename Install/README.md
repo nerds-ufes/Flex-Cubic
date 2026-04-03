@@ -36,7 +36,10 @@ Verifique a versão do kernel:
 ```bash
 uname -r
 ```
-
+OBS: caso o sistemas já possua todos os requisitos, o objeto 'bpf_cubic.o' pode ser carregado diretamente via:
+```bash
+sudo bpftool struct_ops register bpf_cubic.o
+```
 ### Pacotes necessários
 
 ```bash
@@ -82,6 +85,14 @@ llvm-objdump -h bpf_cubic.o
 Você deve ver seções como `.struct_ops` e `.maps`.
 
 ---
+OBS: Em caso de falhas na compilação 'bpf_cubic.c' e/ ou posterior registro do objeto 'bpf_cubic.o' com a ferramenta bpftool,
+basta executar o script de configuração do sistema e instalação do mininet:
+
+```bash
+chmod +x setup_ebpf_env.sh
+sudo ./setup_ebpf_env.sh
+```
+A execução do script pode demorar alguns minutos!
 
 ## 3. Registro do congestion control (`struct_ops`)
 
