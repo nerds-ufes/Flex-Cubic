@@ -2,10 +2,10 @@
 
 """
 mult_link.py: simple link between terminals & switches
-h1 --- t1 -- r1 -- r2 -- t2 --- h2
-h2 --- tn _/          \_ tn --- hn
+h1 ----- s3 ---s1 -- s2 --- s4 -- h2
+h2 ---_/                     \_---- hn
 Use ./config-multi_link.sh
-This is very close to the simplest fully emulated packet-optical
+This is very close to the simplest fully emulated packet
 network that we can create.
 
 """
@@ -16,14 +16,6 @@ import matplotlib
 matplotlib.use('Agg')   # Force matplotlib to not use any Xwindows backend.
 import matplotlib.pyplot as plt
 
-# from mnoptical.dataplane import (
-#     OpticalLink, UnidirectionalOpticalLink as ULink,
-#     ROADM, Terminal, OpticalNet as Mininet, km, m, dB, dBm )
-# from mnoptical.node import Amplifier
-# from mnoptical.ofcdemo.demolib import OpticalCLI as CLI, cleanup
-
-# from mnoptical.rest import RestServer
-# from mnoptical.ofcdemo.demolib import OpticalCLI as CLI
 
 from mininet.node import OVSBridge, Host
 from mininet.topo import Topo
@@ -69,8 +61,6 @@ def limpa_int():
 #################################################################
 
 class SimpleLinkTopo(Topo):
-    """Simple link topology:
-       h1 - t1 - (boost->) --25km-- (<-boost) - t2 - h2"""
 
     def build(self, delay=2, loss = 0, queue = 100):
 
@@ -152,11 +142,7 @@ def tcp_test(algs, delays, p_loss, queue, delays_link, loss_link):
     alg_ajustado = set(algs)
     for a in alg_ajustado:
         print("*** Descobrindo as interfaces do hosts ...")      
-        # h10.cmd("ifconfig {} mtu 1500".format(h10_intf))
-        # h11.cmd("ifconfig {} mtu 9000".format(h11_intf))
-        # h20.cmd("ifconfig {} mtu 1500".format(h20_intf))
-        # h21.cmd("ifconfig {} mtu 9000".format(h21_intf))
-		
+
         print("*** Starting teste de capacidade de canal para  ...")
         print("*** Starting iperf alg {}...".format(a))
         
@@ -201,9 +187,7 @@ def tcp_test(algs, delays, p_loss, queue, delays_link, loss_link):
     
     print("*** Stopping test...")
     print('*** Processing data...')
-    
-    
-    #CLI(net)
+
     net.stop()
 
 if __name__ == '__main__':
@@ -219,15 +203,4 @@ if __name__ == '__main__':
 
     tcp_test(args.algorithms, args.delays, args.loss, args.queue, args.delays_link, args.loss_link)
 
-
-    # parser = argparse.ArgumentParser(description='TCP Congestion Control tests in a dumbbell topology.')
-    # parser.add_argument('-a', '--algorithms', nargs='+', default=['bbr','bbr','bbr2','bbr2','cubic','cubic','bic','bic','reno','reno'], help='List TCP Congestion Control algorithms to test.')
-    # parser.add_argument('-d', '--delays', nargs='+', type=int, default= 10, help='List of backbone router one-way propagation delays to test.')
-    # parser.add_argument('-dl', '--delays_link', nargs='+', type=int, default= 0, help='List of access host-switch one-way propagation delays to test.')
-    # parser.add_argument('-l', '--loss', nargs='+' , type=int, default= 0 , help='loss insertion backbone link sw-sw.')
-    # parser.add_argument('-ll', '--loss_link', nargs='+' , type=int, default= 0 , help='loss insertion access link host-sw.')
-    # parser.add_argument('-q', '--queue', nargs='+' , type=int, default= 100 , help='Backbone Switch Queue Capacity.')
-    # args = parser.parse_args()
-    
-    # tcp_test(args.algorithms, args.delays, args.loss, args.queue, args.delays_link, args.loss_link)
 
