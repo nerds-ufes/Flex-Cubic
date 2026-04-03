@@ -188,7 +188,7 @@ struct {
 |-------------|---------|
 | `beta`      | `717`   |
 | `bic_scale` | `41`    |
-| `mult_rtt`  | `5`     |
+| `mult_rtt`  | `2`     |
 
 ---
 
@@ -224,7 +224,7 @@ sudo bpftool map dump id 123
 ```
 key: 00 00 00 00
 value:
-  cd 02 00 00   29 00 00 00   05 00 00 00
+  cd 02 00 00   29 00 00 00   02 00 00 00
 ```
 
 Interpretando em **little-endian**:
@@ -233,7 +233,7 @@ Interpretando em **little-endian**:
 |-------------|-------|
 | `beta`      | `717` |
 | `bic_scale` | `41`  |
-| `mult_rtt`  | `5`   |
+| `mult_rtt`  | `2`   |
 
 ### Dump em formato JSON
 
@@ -263,12 +263,12 @@ sudo bpftool map update id <MAP_ID> \
 |-------------|---------|----------------------|
 | `beta`      | `800`   | `20 03 00 00`        |
 | `bic_scale` | `50`    | `32 00 00 00`        |
-| `mult_rtt`  | `5`     | `05 00 00 00`        |
+| `mult_rtt`  | `2`     | `02 00 00 00`        |
 
 ```bash
 sudo bpftool map update id 123 \
   key hex 00 00 00 00 \
-  value hex 20 03 00 00 32 00 00 00 05 00 00 00
+  value hex 20 03 00 00 32 00 00 00 02 00 00 00
 ```
 
 ---
@@ -279,12 +279,12 @@ sudo bpftool map update id 123 \
 |-------------|---------|----------------------|
 | `beta`      | `650`   | `8a 02 00 00`        |
 | `bic_scale` | `30`    | `1e 00 00 00`        |
-| `mult_rtt`  | `8`     | `08 00 00 00`        |
+| `mult_rtt`  | `2`     | `02 00 00 00`        |
 
 ```bash
 sudo bpftool map update id 123 \
   key hex 00 00 00 00 \
-  value hex 8a 02 00 00 1e 00 00 00 08 00 00 00
+  value hex 8a 02 00 00 1e 00 00 00 02 00 00 00
 ```
 
 ---
