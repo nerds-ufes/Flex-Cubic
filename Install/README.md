@@ -38,6 +38,7 @@ uname -r
 ```
 OBS: caso o sistemas já possua todos os requisitos, o objeto 'bpf_cubic.o' pode ser carregado diretamente via:
 ```bash
+cd ../bpf_cubic/
 sudo bpftool struct_ops register bpf_cubic.o
 ```
 ### Pacotes necessários
