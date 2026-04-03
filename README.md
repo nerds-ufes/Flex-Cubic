@@ -12,7 +12,7 @@ as a platform for TCP congestion control algorithm (CCA) implementation, enablin
 the kernel via JIT at runtime, without recompilation. Through struct ops and maps, eBPF allows per-flow instrumentation
 and dynamically CCA adaptation.
 
-**Index Terms** — *Congestion Control Algorithms, Physical Layer Impairments, Optical Networks.*
+**Index Terms** — *Congestion Control Algorithms, eBPF*
 
 ## Background and Related Work
 ![Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.](Images/rnp-400-Packet_loss.png)
