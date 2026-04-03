@@ -37,6 +37,7 @@ sudo apt install -y \
   iproute2 \
   iputils-ping \
   net-tools \
+  iperf3 \
   python3 \
   python3-matplotlib\
   python3-pip \
