@@ -15,9 +15,15 @@ and dynamically CCA adaptation.
 **Index Terms** — *Congestion Control Algorithms, eBPF*
 
 ## Background and Related Work
+A structural limitation remains in most CCAs in the differentiation between losses caused by congestion events, illustrated in Fig 1 (a), and those caused by corrupted bits at physical layer by noise and interference, which is depicted in Fig 2 (b). In long-distance optical fibers, free-space optical (FSO) links subject to atmospheric turbulence, and satellite communications links under noise and interference, a non-negligible fraction of packet losses stems from residual bit errors rate (BER), and not from buffer overload. 
+
 ![Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.](Images/rnp-400-Packet_loss.png)
 
 **Fig 1** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
+
+As a result, losses caused by corrupted packets are interpreted as congestion signals, causing cwnd reductions, unwarranted rate oscillations, and systematic under-utilization of available bandwidth. In this work, we focus on networks composed of high Bandwidth-Delay Product (BDP) links, where this effect is particularly severe, as window recovery after a reduction may require tens or hundreds of RTTs, significantly degrading average throughput, while also highlighting the behavior of loss-based algorithms.
+
+In addition, there are strong dependence of congestion control on RTT. Route reconfigurations in adaptable networks may impose different propagation delays to in-flight packets of a given flow, as illustrated in Fig 1 (c) triggering a loss event. Classic performance models show that TCP throughput is proportional to cwnd/RTT and inversely proportional to $RTT \cdot \sqrt{p}$, where \textit{p} denotes the packet loss probability. Thus, links with high RTT require proportionally larger windows to fully exploit the available capacity. However, in modern networks, particularly in optical networks and Low Earth Orbit (LEO) satellite networks, this assumption is no longer valid. In these systems, RTT becomes a dynamic variable, subject to frequent sudden changes; and modern CCAs must be equipped with tools for facing such challenges. 
 
 ## Topology: TCP Cubic association with eBPF
 ![Topology adopted and results of competition between two (partially overlapping) flows using standard TCP Cubic vs. Flex-Cubic with losses
