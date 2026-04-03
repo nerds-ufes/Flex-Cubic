@@ -29,7 +29,7 @@ In addition, there are strong dependence of congestion control on RTT. Route rec
 ![Topology adopted and results of competition between two (partially overlapping) flows using standard TCP Cubic vs. Flex-Cubic with losses
 and queue bottlenecks.](Images/eBPF-Link.png)
 
-**Fig 2** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
+**Fig 2** - *Topology adopted and results of competition between two (partially overlapping) flows using standard TCP Cubic vs. Flex-Cubic with losses and queue bottlenecks.*
 
 
 ## Results
