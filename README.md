@@ -53,6 +53,8 @@ The joint tuning of these parameters enables TCP Cubic to be adjusted toward mor
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)](Images/throughput_all_delays_b09_s41.jpeg)
 
+**Fig. 5** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)*
+
 the results indicate that Flex-Cubic mitigates key limitations of traditional TCP Cubic by incorporating RTT-based decision mechanisms, enabling improved performance in high-BDP and loss-prone environments, while introducing a controllable trade-off between aggressiveness, stability, and retransmission overhead.
 
 Overall, the results indicate that Flex-Cubic mitigates key limitations of TCP Cubic by incorporating RTT-based decision mechanisms. This design enables improved performance in high-BDP and loss-prone environments, while providing a tunable balance between aggressiveness and stability, at the cost of controlled increases in retransmissions.
