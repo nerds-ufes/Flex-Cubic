@@ -48,6 +48,13 @@ The joint tuning of these parameters enables TCP Cubic to be adjusted toward mor
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)](Images/throughput_all_delays_b07_s41.jpeg) 
 
+### Conclusion
+This work presented TCP Flex-Cubic, a CCA derived from TCP Cubic and enhanced with eBPF features support toward runtime adaptability. TCP Flex-Cubic may dynamically follow communication link conditions and, when compared to traditional TCP Cubic, offers the additional capability to differentiate between packet losses caused by queue overload at intermediate nodes and losses induced by physical layer impairments effects. This work extends our previous studies on the dynamic adaptability of TCP CCAs to physical-layer constraints and the requirements of loss-sensitive applications, such as Data-Intesive Science (DiS), leveraging additional metrics toward cross-layer approaches.
+
+The integration of the maps eBPF tool with the TCP congestion control algorithm (CCAs) was discussed in details, offering an alternative to the static algorithms traditionally implemented in the Linux kernel. This integration allows for dynamic interaction between runtime metrics and CCA control variables, representing a substantial evolution of TCP by enabling adaptation to networks with non-static characteristics, including satellite, FSO, and optical networks with disjoint paths and heterogeneous properties.
+
+Future works will progress toward larger scale tests for Flex-Cubic with multihop flows competing with background traffic and under physical layer reconfiguration toward TE studies, which will include Cubic parameter optimization according to current perceived network states.   
+
 **Fig. 4** - *Throughput comparison between Cubic and Flex-Cubic (β = 0.7,C = 41)*
 
 ![Throughput comparison between Cubic and Flex-Cubic (β = 0.9,C = 41)](Images/throughput_all_delays_b09_s41.jpeg)
