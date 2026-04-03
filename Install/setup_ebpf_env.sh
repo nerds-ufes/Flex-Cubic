@@ -140,14 +140,25 @@ echo "[*] Executando instalação do Mininet..."
 sudo ./mininet/util/install.sh -nv
 
 # =========================
-# 12. Teste do Mininet
+# 12. Instalando e configurando o OpenVSwitch
+# =========================
+
+sudo apt install -y openvswitch-switch
+
+sudo systemctl start openvswitch-switch
+sudo systemctl enable openvswitch-switch
+
+sudo ovs-vsctl show
+
+# =========================
+# 13. Teste do Mininet
 # =========================
 echo "[*] Testando Mininet..."
 
 sudo mn --test pingall
 
 # =========================
-# 13. Final
+# 14. Final
 # =========================
 echo "=============================="
 echo " Setup completo!"
