@@ -19,7 +19,7 @@ A structural limitation remains in most CCAs in the differentiation between loss
 
 ![Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.](Images/rnp-400-Packet_loss.png)
 
-**Fig 1** - *Setup: Setup created for flow testing with competition between 10 TCP flows.*
+**Fig 1** - *Discarding of packets due to: (a) buffer overload, (b) packet corruption, and (c) packet timeout.*
 
 As a result, losses caused by corrupted packets are interpreted as congestion signals, causing cwnd reductions, unwarranted rate oscillations, and systematic under-utilization of available bandwidth. In this work, we focus on networks composed of high Bandwidth-Delay Product (BDP) links, where this effect is particularly severe, as window recovery after a reduction may require tens or hundreds of RTTs, significantly degrading average throughput, while also highlighting the behavior of loss-based algorithms.
 
