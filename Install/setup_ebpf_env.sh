@@ -38,6 +38,7 @@ sudo apt install -y \
   iputils-ping \
   net-tools \
   python3 \
+  python3-matplotlib\
   python3-pip \
   linux-headers-$(uname -r)
 
