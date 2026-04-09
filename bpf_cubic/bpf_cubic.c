@@ -88,28 +88,6 @@ static int hystart_detect = HYSTART_ACK_TRAIN | HYSTART_DELAY;
 static int hystart_low_window = 16;
 static int hystart_ack_delta_us = 2000;
 
-// static const __u32 cube_rtt_scale = (bic_scale * 10);	/* 1024*c/rtt */
-// static const __u32 beta_scale = 8*(BICTCP_BETA_SCALE+cubic_beta()) / 3
-// 				/ (BICTCP_BETA_SCALE - cubic_beta());
-
-/* calculate the "K" for (wmax-cwnd) = c/rtt * K^3
- *  so K = cubic_root( (wmax-cwnd)*rtt/c )
- * the unit of K is bictcp_HZ=2^10, not HZ
- *
- *  c = bic_scale >> 10
- *  rtt = 100ms
- *
- * the following code has been designed and tested for
- * cwnd < 1 million packets
- * RTT < 100 seconds
- * HZ < 1,000,00  (corresponding to 10 nano-second)
- */
-
-/* 1/c * 2^2*bictcp_HZ * srtt, 2^40 */
-
-/* Redefinição do parâmetro beta, anteriormente constante, agora mutável via map eBPF*/
-/* Definição do struct e map eBPF*/
-
 /*#######################################################################
   #######################################################################*/
   #ifndef HYSTART_MIN_SAMPLES
@@ -653,19 +631,6 @@ __u32 BPF_PROG(bpf_cubic_recalc_ssthresh, struct sock *sk)
 
 }
 
-// SEC("struct_ops")
-// void BPF_PROG(bpf_cubic_state, struct sock *sk, __u8 new_state)
-// {
-// 	struct bpf_bictcp *ca = inet_csk_ca(sk);
-// 	__u32 current_delay = ca->curr_rtt;
-// 	struct rtt_metrics stats = calculate_rtt_metrics(ca, ca->curr_rtt);
-
-// 	if (new_state == TCP_CA_Loss) {
-// 		bictcp_reset(inet_csk_ca(sk));
-// 		bictcp_hystart_reset(sk);
-// 	}
-// }
-
 SEC("struct_ops")
 void BPF_PROG(bpf_cubic_state, struct sock *sk, __u8 new_state)
 {
@@ -676,12 +641,12 @@ void BPF_PROG(bpf_cubic_state, struct sock *sk, __u8 new_state)
 	/* Condição 1: Estado é Loss? */
 	__u8 is_loss_state = (new_state == TCP_CA_Loss);
 	
-	/* Condição 2: RTT aumentou 5x? */
+	/* Condição 2: RTT aumentou Nx? */
 	__u8 is_rtt_x = 0; 
 	int m = (int)(cubic_mult_rtt());
 	if (ca->delay_min > 0 && ca->curr_rtt > 0) {
-		/* Calcula se curr_rtt é pelo menos 5x delay_min */
-		is_rtt_x = (ca->curr_rtt >= ca->delay_min * m); /*Este valor de 5x poderia ser um map eBPF*/
+		/* Calcula se curr_rtt é pelo menos Nx delay_min */
+		is_rtt_x = (ca->curr_rtt >= ca->delay_min * m); /*Este valor de Nx poderia ser um map eBPF*/
 	}
 	
 	/* APENAS se AMBAS condições forem verdadeiras */
@@ -689,29 +654,9 @@ void BPF_PROG(bpf_cubic_state, struct sock *sk, __u8 new_state)
 		bictcp_reset(ca);
 		bictcp_hystart_reset(sk);
 		
-		// bpf_printk("Reset executado: Loss AND RTT 5x aumento\n");
 	}
 	/* else: não faz nada em caso de Loss sem aumento de RTT */
 }
-
-// SEC("struct_ops")
-// void BPF_PROG(bpf_cubic_state, struct sock *sk, __u8 new_state)
-// {
-// 	struct bpf_bictcp *ca = inet_csk_ca(sk);
-	
-// 	/* 1. CALCULAR MÉTRICAS DE RTT (se desejado) */
-// 	/* Pega o current_delay atual da estrutura */
-// 	__u32 current_delay = ca->curr_rtt;
-	
-// 	/* Calcula as métricas (OPCIONAL - apenas para monitoramento) */
-// 	struct rtt_metrics stats = calculate_rtt_metrics(ca, current_delay);
-	
-// 	/* 3. LÓGICA DE MUDANÇA DE ESTADO (obrigatória) */
-// 	if (new_state == TCP_CA_Loss) {
-// 		/* Reset do Cubic ao detectar perda */
-// 		bictcp_reset(ca);
-// 		bictcp_hystart_reset(sk);
-// }
 
 #define GSO_MAX_SIZE		65536
 
