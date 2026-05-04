@@ -1,5 +1,5 @@
 
-# bpf_cubic.c — TCP CUBIC via eBPF `struct_ops`
+# bpf_cubic.c (Flex-cubic) — TCP CUBIC via eBPF `struct_ops`
 
 Implementação do algoritmo de controle de congestionamento TCP **CUBIC** como um programa eBPF usando a interface `struct_ops`. Permite carregar, registrar e configurar dinamicamente o CUBIC no kernel Linux sem recompilar ou substituir módulos — e ajustar seus parâmetros em tempo real via mapa eBPF.
 
