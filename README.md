@@ -15,7 +15,7 @@ and dynamically CCA adaptation.
 **Index Terms** — *Congestion Control Algorithms, eBPF*
 
 ## Instructions for reproduction
-To reproduce the experiments presented and analyzed here, consult the instructions in the directories [read](Install/README.md) and [read](Scripts/README.md). For the source code of the TCP Flex-cubic algorithm, consult the file [read](bpf_cubic/README.md).
+To reproduce the experiments presented and analyzed here, consult the instructions in the directories [Install](Install/README.md) and [Scripts](Scripts/README.md). For the source code of the TCP Flex-cubic algorithm, consult the file [Flex-Cubic source code](bpf_cubic/README.md).
 
 ## Background and Related Work
 A structural limitation remains in most CCAs in the differentiation between losses caused by congestion events, illustrated in Fig 1 (a), and those caused by corrupted bits at physical layer by noise and interference, which is depicted in Fig 2 (b). In long-distance optical fibers, free-space optical (FSO) links subject to atmospheric turbulence, and satellite communications links under noise and interference, a non-negligible fraction of packet losses stems from residual bit errors rate (BER), and not from buffer overload. 
