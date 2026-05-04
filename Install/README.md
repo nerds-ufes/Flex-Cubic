@@ -42,6 +42,24 @@ cd ../bpf_cubic/
 sudo bpftool struct_ops register bpf_cubic.o
 ```
 ### Pacotes necessários
+```bash
+python3
+time
+datetime
+csv
+os
+sys
+subprocess
+argparse
+threading
+socket
+matplotlib
+numpy
+```
+
+```bash
+mininet
+```
 
 ```bash
 sudo apt update
