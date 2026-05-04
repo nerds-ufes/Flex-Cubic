@@ -81,6 +81,13 @@ sudo apt update
 udo apt install -y iperf3
 ```
 
+Iproute2
+```bash
+sudo apt update
+sudo apt install iproute2
+```
+
+
 ```bash
 sudo apt update
 sudo apt install -y clang-14 llvm-14 libbpf-dev bpftool linux-headers-$(uname -r)
