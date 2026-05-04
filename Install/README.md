@@ -42,11 +42,16 @@ cd ../bpf_cubic/
 sudo bpftool struct_ops register bpf_cubic.o
 ```
 ### Pacotes necessários
+
+Python3
 ```bash
-python3
+sudo apt-get update
+sudo apt-get install python3 python3-pip git
+
+Bibliotecas python
+```bash
 time
 datetime
-csv
 os
 sys
 subprocess
@@ -57,8 +62,22 @@ matplotlib
 numpy
 ```
 
+Mininet
 ```bash
-mininet
+sudo apt-get update
+sudo apt-get install python3 python3-pip git
+git clone https://github.com/mininet/mininet
+cd mininet
+git tag  # list available versions
+git checkout -b mininet-2.3.1b4 2.3.1b4  # Or later
+cd ..
+./mininet/util/install.sh -nv
+```
+
+Iperf3
+```bash
+sudo apt update
+udo apt install -y iperf3
 ```
 
 ```bash
