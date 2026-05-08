@@ -16,7 +16,7 @@ cd /bpf_cubic
 sudo bpftool struct_ops register bpf_cubic.o
 cd ..
 ```
-Obs1.: Para mais detalhes, siga as instruções em [Install/README.md](Flex-Cubic/Install/README.md) .
+Obs1.: Para mais detalhes, siga as instruções em [Install/README.md](Install/README.md) .
 
 ### 2. Execução dos testes no Mininet:
 
