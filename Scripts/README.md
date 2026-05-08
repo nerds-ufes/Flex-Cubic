@@ -2,6 +2,13 @@
 
 ### 1. Preparação do ambiente
 
+Clone do repositório:
+```bash
+git clone https://github.com/nerds-ufes/Flex-Cubic.git
+cd Flex-Cubic/
+```
+Obs.: É necessária a permissão de root para reprodução total ou parcial.
+
 Com a o Mininet e OpenVSwitch instalados e configurados, registre o 'bpf_cubic.o' (Flex-Cubic) via:
 
 ```bash
