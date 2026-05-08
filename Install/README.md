@@ -113,10 +113,19 @@ sudo bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
 ---
 
 ## 2. Compilação do código eBPF
+### 1. Preparação do ambiente
+
+Clone o repositório:
+```bash
+git clone https://github.com/nerds-ufes/Flex-Cubic.git
+cd Flex-Cubic/
+```
+Obs.: É necessária a permissão de root para reprodução total ou parcial.
 
 Compile com os flags indicados no cabeçalho do código:
 
 ```bash
+cd bpf_cubic/
 sudo clang-14 -target bpf -D__TARGET_ARCH_x86 -g -O2 -Wall -c bpf_cubic.c -o bpf_cubic.o
 ```
 
