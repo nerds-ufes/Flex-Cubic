@@ -26,7 +26,7 @@ cd Scripts
 sudo chmod +x *.sh
 sudo ./exe.sh
 ```
-Obs2.: A conclusão do script 'exe.sh' leva por volta de 3h e 20 min! 
+Obs2.: A conclusão do script exe.sh leva por volta de 4h, considerando que cada seção do iperf dura 200 segundos (50 segundos iniciais de teste de conexão + 150 segundos de transmissão de fato). O tempo de execução pode ser reduzido com a alteração das variáveis runtime (linha 166) e iperf_runtime (linha 180) do script topo_beta.py (Flex-Cubic/Scripts/topo_beta.py).
 
 ### 3. Avaliação de resultados - Gáficos e tabelas
 
