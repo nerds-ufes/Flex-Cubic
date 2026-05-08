@@ -2,7 +2,7 @@
 
 ### 1. Preparação do ambiente
 
-Clone do repositório:
+Clonando o repositório:
 ```bash
 git clone https://github.com/nerds-ufes/Flex-Cubic.git
 cd Flex-Cubic/
