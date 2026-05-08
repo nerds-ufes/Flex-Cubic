@@ -14,6 +14,82 @@ and dynamically CCA adaptation.
 
 **Index Terms** — *Congestion Control Algorithms, eBPF*
 
+---
+
+## Artifact Evaluation
+
+### Seals Considered
+
+| Seal | Description |
+|------|-------------|
+| **SeloD** — Available | Source code, scripts, and documentation are publicly available at this repository |
+| **SeloF** — Functional | The eBPF algorithm compiles, loads into the kernel, and runs controlled network experiments |
+| **SeloS** — Sustainable | Modular structure with documented parameterization and runtime dynamic configuration |
+| **SeloR** — Reproducible | All paper results can be reproduced using the provided scripts (see [Scripts/README.md](Scripts/README.md)) |
+
+### Repository Structure
+
+```
+Flex-Cubic/
+├── bpf_cubic/                      # eBPF implementation of Flex-Cubic
+│   ├── bpf_cubic.c                 # Flex-Cubic source code
+│   ├── bpf_cubic.o                 # Pre-compiled eBPF object (convenience; recompile if kernel differs)
+│   ├── bpf_tracing_net.h           # Auxiliary network header
+│   ├── vmlinux.h                   # BTF kernel types (kernel-specific — regenerate with bpftool btf dump)
+│   ├── Makefile                    # Build rules
+│   └── README.md                   # Code architecture and API documentation
+├── Install/
+│   ├── setup_ebpf_env.sh           # Automated environment setup script
+│   └── README.md                   # Step-by-step installation and dependency guide
+├── Scripts/
+│   ├── exe.sh                      # Main experiment runner (all β configurations)
+│   ├── exe_alg.sh                  # Per-configuration loop (delay × loss × queue)
+│   ├── exe_plot.sh                 # Graph generation for all configurations
+│   ├── topo_beta.py                # Mininet topology and iperf3 orchestration
+│   ├── plot_iperf_multi_queue.py   # Throughput/RTT/cwnd plotting script
+│   └── README.md                   # Experiment execution and reproduction guide
+├── Images/                         # Result figures referenced in the paper
+├── requirements.txt                # Python dependencies (pip install -r requirements.txt)
+├── LICENSE                         # GPL-2.0 license
+└── README.md                       # This file
+```
+
+> **Note:** `bpf_cubic.o` and `vmlinux.h` were compiled on a Linux 6.5 kernel. If your kernel version differs, regenerate them by following [Install/README.md](Install/README.md).
+
+### Tested Environment
+
+| Component | Version |
+|-----------|---------|
+| OS | Ubuntu 22.04 LTS |
+| Linux kernel | ≥ 6.5 (with eBPF `struct_ops` + TCP CCA BPF support) |
+| clang / llvm | 14 |
+| bpftool | ≥ 7.3 |
+| Mininet | 2.3.1b4 |
+| Open vSwitch | ≥ 2.13 |
+| iperf3 | ≥ 3.9 |
+| Python | 3.10+ |
+| numpy | ≥ 1.21 |
+| matplotlib | ≥ 3.5 |
+
+Minimum kernel requirement: Linux ≥ 6.1 with `CONFIG_BPF_JIT=y`, `CONFIG_NET_SCH_FQ=y`, and TCP congestion control via BPF (`tcp_congestion_ops` struct_ops) enabled.
+
+### Security Notice
+
+> ⚠️ **Root privileges are required.** All scripts and `bpftool` commands must be run with `sudo` or as `root`.
+>
+> Running these experiments will:
+> - Register a custom TCP congestion control algorithm into the **running kernel**
+> - Temporarily **change the system-wide default TCP algorithm** via `sysctl`
+> - Create Mininet virtual network namespaces and virtual interfaces
+>
+> **Recommendation:** use an isolated VM or a dedicated test machine. Restore the system defaults after experiments:
+> ```bash
+> sudo sysctl -w net.ipv4.tcp_congestion_control=cubic
+> sudo bpftool struct_ops unregister name cubic
+> ```
+
+---
+
 ## Instructions for reproduction
 To reproduce the experiments presented and analyzed here, consult the instructions in the directories [Install](Install/README.md) and [Scripts](Scripts/README.md). For the source code of the TCP Flex-cubic algorithm, consult the file [Flex-Cubic source code](bpf_cubic/README.md).
 
