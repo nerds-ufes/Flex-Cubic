@@ -51,10 +51,10 @@ python3 topo_beta.py -a cubic bpf_cubic -d 10 -l 0.5 -q 100 -dl 0 -ll 0
 
 ```
 Onde: 
-### `-a` indica algoritmos TCP a serem usados (Ex.: cubic, bbr, reno, bpf_cubic)
-### `-d` indica o delay inserico via tc netem no link
-### `-l` indica a porcentagem de perda de pacotes
-### `-q`, a fração de fila na interface do switch 
-### `-dl` e `-ll`, emulam valores diferentes de delay e perdas entre os links dos pares.
+##### `-a` indica algoritmos TCP a serem usados (Ex.: cubic, bbr, reno, bpf_cubic)
+##### `-d` indica o delay inserico via tc netem no link
+##### `-l` indica a porcentagem de perda de pacotes
+##### `-q`, a fração de fila na interface do switch 
+##### `-dl` e `-ll`, emulam valores diferentes de delay e perdas entre os links dos pares.
 
 
