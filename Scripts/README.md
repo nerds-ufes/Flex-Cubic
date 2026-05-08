@@ -42,3 +42,41 @@ cubic_b03_s41_m02/bpf_cubic/output_plots/
 cubic_b07_s41_m02/bpf_cubic/output_plots/
 cubic_b09_s41_m02/bpf_cubic/output_plots/
 ```
+
+### 4. Rápido teste de execução:
+Com o ambiente preparado e o bpf_cubic.o carregado, basta executar como root o script [topo_beta.py](topo_beta.py) :
+
+```bash
+python3 topo_beta.py -a cubic bpf_cubic -d 10 -l 0.5 -q 100 -dl 0 -ll 0
+
+```
+Onde: 
+#### Parâmetros de Linha de Comando para Experimentos de Rede
+
+Este documento descreve os argumentos de linha de comando disponíveis para configurar experimentos de rede com algoritmos de controle de congestionamento TCP.
+
+##### Argumentos Disponíveis
+
+##### `-a`, `--algorithms`
+**Lista de algoritmos de controle de congestionamento TCP a serem testados**
+
+| Propriedade | Valor |
+|-------------|-------|
+| Tipo | Múltiplos valores (`nargs='+'`) |
+| Padrão | `['cubic', 'cubic']` |
+| Obrigatório | Não |
+
+**Descrição:** Define quais algoritmos de controle de congestionamento serão utilizados nos testes. Aceita um ou mais algoritmos para execução em sequência ou paralelo.
+
+**Exemplos:**
+```bash
+# Algoritmo único
+-a cubic
+
+# Múltiplos algoritmos
+-a cubic bbr reno
+
+# Usando nome longo
+--algorithms cubic bbr
+
+
