@@ -78,7 +78,7 @@ cd ..
 Iperf3
 ```bash
 sudo apt update
-udo apt install -y iperf3
+sudo apt install -y iperf3
 ```
 
 Iproute2
