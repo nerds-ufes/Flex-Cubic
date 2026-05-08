@@ -51,32 +51,10 @@ python3 topo_beta.py -a cubic bpf_cubic -d 10 -l 0.5 -q 100 -dl 0 -ll 0
 
 ```
 Onde: 
-#### Parâmetros de Linha de Comando para Experimentos de Rede
-
-Este documento descreve os argumentos de linha de comando disponíveis para configurar experimentos de rede com algoritmos de controle de congestionamento TCP.
-
-##### Argumentos Disponíveis
-
-##### `-a`, `--algorithms`
-**Lista de algoritmos de controle de congestionamento TCP a serem testados**
-
-| Propriedade | Valor |
-|-------------|-------|
-| Tipo | Múltiplos valores (`nargs='+'`) |
-| Padrão | `['cubic', 'cubic']` |
-| Obrigatório | Não |
-
-**Descrição:** Define quais algoritmos de controle de congestionamento serão utilizados nos testes. Aceita um ou mais algoritmos para execução em sequência ou paralelo.
-
-**Exemplos:**
-```bash
-# Algoritmo único
--a cubic
-
-# Múltiplos algoritmos
--a cubic bbr reno
-
-# Usando nome longo
---algorithms cubic bbr
+### `-a` indica algoritmos TCP a serem usados (Ex.: cubic, bbr, reno, bpf_cubic)
+### `-d` indica o delay inserico via tc netem no link
+### `-l` indica a porcentagem de perda de pacotes
+### `-q`, a fração de fila na interface do switch 
+### `-dl` e `-ll`, emulam valores diferentes de delay e perdas entre os links dos pares.
 
 
