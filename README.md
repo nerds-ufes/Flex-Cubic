@@ -33,9 +33,7 @@ and dynamically CCA adaptation.
 Flex-Cubic/
 ├── bpf_cubic/                      # eBPF implementation of Flex-Cubic
 │   ├── bpf_cubic.c                 # Flex-Cubic source code
-│   ├── bpf_cubic.o                 # Pre-compiled eBPF object (convenience; recompile if kernel differs)
 │   ├── bpf_tracing_net.h           # Auxiliary network header
-│   ├── vmlinux.h                   # BTF kernel types (kernel-specific — regenerate with bpftool btf dump)
 │   ├── Makefile                    # Build rules
 │   └── README.md                   # Code architecture and API documentation
 ├── Install/
