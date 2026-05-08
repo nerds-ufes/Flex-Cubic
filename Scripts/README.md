@@ -43,7 +43,40 @@ cubic_b07_s41_m02/bpf_cubic/output_plots/
 cubic_b09_s41_m02/bpf_cubic/output_plots/
 ```
 
-### 4. Rápido teste de execução:
+### 4. Mapeamento figura → script
+
+Cada figura do artigo corresponde a uma configuração do script `exe.sh` e um diretório de saída:
+
+| Figura do artigo | β (Flex-Cubic) | Diretório gerado | Gráficos em |
+|---|---|---|---|
+| Fig. 3 (β ≈ 0.3) | 358/1024 ≈ 0.35 | `cubic_b03_s41_m02/` | `cubic_b03_s41_m02/bpf_cubic/output_plots/` |
+| Fig. 4 (β ≈ 0.7) | 717/1024 ≈ 0.70 | `cubic_b07_s41_m02/` | `cubic_b07_s41_m02/bpf_cubic/output_plots/` |
+| Fig. 5 (β ≈ 0.9) | valor configurado | `cubic_b09_s41_m02/` | `cubic_b09_s41_m02/bpf_cubic/output_plots/` |
+
+Cada figura compara TCP Cubic vs. Flex-Cubic sob as seguintes condições experimentais:
+- **OWD (delays):** 10, 25 e 50 ms (RTT mínimo: 20, 50 e 100 ms)
+- **Perdas de pacotes:** 0%, 0.5%, 1%, 1.5% e 2% (injetadas via `tc netem`; parâmetro `seq 0 50 200` dividido por 100)
+- **Tamanho de fila:** 25%, 50%, 75% e 100% do BDP
+- **Repetições por cenário:** 150 segundos de transmissão iperf3 por execução
+
+**Estrutura dos dados brutos gerados:**
+```
+cubic_bXX_s41_m02/
+└── bpf_cubic/
+    ├── QUEUE_100/
+    │   ├── iperf3_cubic_h10-h20_<loss>_loss_<delay>ms.txt   # JSON iperf3 TCP Cubic
+    │   └── iperf3_bpf_cubic_h11-h21_<loss>_loss_<delay>ms.txt  # JSON iperf3 Flex-Cubic
+    ├── QUEUE_75/
+    ├── QUEUE_50/
+    ├── QUEUE_25/
+    └── output_plots/   # Gráficos gerados por exe_plot.sh
+```
+
+Para alterar o número de repetições ou duração de cada teste, edite em [topo_beta.py](topo_beta.py):
+- Linha 152: `runtime = 50` — duração do teste de capacidade inicial (segundos)
+- Linha 166: `iperf_runtime = 150` — duração do teste de throughput principal (segundos)
+
+### 5. Rápido teste de execução:
 Com o ambiente preparado e o bpf_cubic.o carregado, basta executar como root o script [topo_beta.py](topo_beta.py) :
 
 ```bash
